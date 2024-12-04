@@ -21,10 +21,11 @@ RUN ./install/createDefaultPassword.sh -c -p ${DEFAULT_PW}
 # Build DataExport
 #
 COPY ./dataexport /build/dataexport
+RUN  mvn clean install -DskipTests
 WORKDIR /build/dataexport/dataexport-core
 RUN ls /build/dataexport/dataexport-core
-# RUN --mount=type=cache,target=/root/.m2,sharing=locked \
-#     mvn dependency:go-offline 
+RUN --mount=type=cache,target=/root/.m2,sharing=locked \
+    mvn dependency:go-offline 
 RUN --mount=type=cache,target=/root/.m2,sharing=locked \
     mvn clean install -DskipTests
 WORKDIR /build/dataexport/
