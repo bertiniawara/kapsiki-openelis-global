@@ -20,6 +20,7 @@ RUN ./install/createDefaultPassword.sh -c -p ${DEFAULT_PW}
 ##
 # Build DataExport
 #
+RUN ls -la dataexport
 COPY ./dataexport /build/dataexport
 WORKDIR /build/dataexport/dataexport-core
 COPY ./dataexport/dataexport-core/pom.xml /build/dataexport/dataexport-core/pom.xml
