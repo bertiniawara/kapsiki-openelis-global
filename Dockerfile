@@ -22,6 +22,7 @@ RUN ./install/createDefaultPassword.sh -c -p ${DEFAULT_PW}
 #
 COPY ./dataexport /build/dataexport
 WORKDIR /build/dataexport/dataexport-core
+COPY ./dataexport/dataexport-core/pom.xml /build/dataexport/dataexport-core/pom.xml
 RUN ls -la /build/dataexport/dataexport-core
 RUN --mount=type=cache,target=/root/.m2,sharing=locked \
     mvn dependency:go-offline 
